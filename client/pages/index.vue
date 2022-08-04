@@ -3,6 +3,11 @@
     <div class="m-8 flex items-center justify-center">
       <Logo />
     </div>
+    <div class="m-8 flex items-center justify-center">
+      <n-link to="/login">
+        <push-button theme="whiteLeft" class="-mr-px"> Login </push-button>
+      </n-link>
+    </div>
     <ul v-if="users.length === 0" class="grid grid-cols-1 gap-6 bg-gray-100 rounded p-8 w-full sm:grid-cols-2 lg:grid-cols-3">
       <contact-card-skeleton v-for="i in 9" :key="`skel-${i}`" />
     </ul>
