@@ -69,6 +69,7 @@
         <span class="mr-2 text-gray-500 text-sm">&lt;IconSpinner/&gt;</span>
         <IconSpinner class="w-5 h-5" />
       </div>
+
     </div>
     <div class="flex my-20">
       <div class="bg-white p-2 rounded border mr-10">

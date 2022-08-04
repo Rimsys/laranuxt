@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use acidjazz\metapi\MetApi;
+use App\Traits\ResponseGenerator;
 use Faker\Factory;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -15,7 +16,7 @@ use Illuminate\Support\Facades\Artisan;
 
 class Controller extends BaseController
 {
-    use AuthorizesRequests, DispatchesJobs, ValidatesRequests, MetApi;
+    use AuthorizesRequests, DispatchesJobs, ValidatesRequests, MetApi, ResponseGenerator;
 
     /**
      * Display our routes
