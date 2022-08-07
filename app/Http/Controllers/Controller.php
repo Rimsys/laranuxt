@@ -12,9 +12,12 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Artisan;
+use App\Traits\ApiResponseTrait;
 
 class Controller extends BaseController
 {
+    use ApiResponseTrait;
+
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests, MetApi;
 
     /**
