@@ -11,16 +11,11 @@
   </div>
 </template>
 <script lang="ts">
-import { PropType } from '@nuxtjs/composition-api'
 import Vue from 'vue'
-import { BioData } from '@/client/types/api'
 export default Vue.extend({
   name: 'InterestComponent',
   props: {
-    interests: {
-      type: Array as PropType<BioData>,
-      required: true,
-    },
+    interests: Array,
   },
 })
 </script>
