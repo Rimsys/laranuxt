@@ -28,7 +28,7 @@ class ExperienceRequest extends FormRequest
             'position' => 'required|string|min:3',
             'responsibilities' => 'required',
             'start_date' => 'required|date',
-            'end_date' => 'required|date',
+            'end_date' => 'nullable|date',
             'is_current_position' => 'required|boolean',
         ];
     }

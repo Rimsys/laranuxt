@@ -41,7 +41,7 @@ import Vue from 'vue'
 import { Skill } from '@/client/types/api'
 
 export default Vue.extend({
-  name: 'SkillComponent',
+  name: 'StoreSkill',
   props: {
     skill: {
       type: Object as PropType<Skill>,
@@ -74,7 +74,7 @@ export default Vue.extend({
           })
         })
         .catch((error) => {
-          console.log(error)
+          this.$toast.danger(error.response.data.message)
         })
     },
   },

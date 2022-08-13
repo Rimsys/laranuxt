@@ -116,7 +116,7 @@
           values
         </label>
         <textarea
-          v-model="bioToUpdate.values"
+          v-model="bioToUpdate.myvalues"
           name=""
           class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           placeholder="Values"
@@ -168,7 +168,7 @@ import { PropType } from '@nuxtjs/composition-api'
 import Vue from 'vue'
 import { Bio } from '@/client/types/api'
 export default Vue.extend({
-  name: 'BioDataStoreComponent',
+  name: 'StoreBiodata',
   props: {
     bio: {
       type: Object as PropType<Bio>,
@@ -184,7 +184,7 @@ export default Vue.extend({
         email: '',
         location: '',
         professional_summary: '',
-        interests: [],
+        interests: '',
         myvalues: '',
         github_url: '',
         linkedin_url: '',
@@ -200,7 +200,7 @@ export default Vue.extend({
     setBioToUpdate () {
       this.bioToUpdate = {
         ...this.bio,
-        interests: this.bio.interests,
+        interests: this.bio.interests.join(','),
       }
     },
 
@@ -214,7 +214,7 @@ export default Vue.extend({
           })
         })
         .catch((error) => {
-          console.log(error)
+          this.$toast.danger(error.response.data.message)
         })
     },
   },

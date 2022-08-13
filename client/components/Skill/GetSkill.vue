@@ -10,7 +10,7 @@
         v-if="skills.length &gt; 0"
         class="grid grid-cols-1 gap-6 bg-gray-100 rounded p-8 w-full sm:grid-cols-2 lg:grid-cols-3"
       >
-        <skill-list-component
+        <skill-list-skill
           v-for="(skill, index) in skills"
           :key="index"
           :skill="skill"
@@ -25,6 +25,7 @@
 import Vue from 'vue'
 import { Skill, Skills } from '@/types/api'
 export default Vue.extend({
+  name: 'GetSkill',
   data () {
     const skills: Skills = []
     return {

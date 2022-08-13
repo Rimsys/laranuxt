@@ -13,7 +13,7 @@
 <script lang="ts">
 import Vue from 'vue'
 export default Vue.extend({
-  name: 'ValueComponent',
+  name: 'GetValue',
   props: { myvalues: String },
 })
 </script>

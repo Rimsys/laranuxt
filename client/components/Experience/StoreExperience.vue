@@ -110,7 +110,7 @@ import { PropType } from '@nuxtjs/composition-api'
 import Vue from 'vue'
 import { Experiencies } from '@/client/types/api'
 export default Vue.extend({
-  name: 'ExperienceStoreComponent',
+  name: 'StoreExperience',
   props: {
     experience: {
       type: Object as PropType<Experiencies>,
@@ -137,25 +137,24 @@ export default Vue.extend({
     setExperienceToUpdate () {
       this.experienceToUpdate = {
         ...this.experience,
-        responsibilities: this.experience.responsibilities,
+        responsibilities: this.experience.responsibilities.join(','),
       }
     },
 
     async storeExperienceData () {
-      console.warn('storeExperienceData')
       await this.$axios
         .patch(
           `experience/update/${this.experience.id}`,
           this.experienceToUpdate,
         )
         .then(() => {
-          this.$emit('update-experience', {
+          this.$emit('experience-updated', {
             initial: this.experience,
             updated: this.experienceToUpdate,
           })
         })
         .catch((error) => {
-          console.log(error)
+          this.$toast.danger(error.response.data.message)
         })
     },
   },

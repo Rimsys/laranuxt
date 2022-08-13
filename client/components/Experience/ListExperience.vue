@@ -37,27 +37,27 @@
         </li>
       </ul>
     </div>
-    <modal-component
+    <modal-base
       v-if="editModalActive"
       :destroyed="() => (editModalActive = false)"
     >
-      <store-component
+      <store-experience
         :experience="experience"
         @experience-updated="$emit('experience-updated', $event)"
       />
-    </modal-component>
+    </modal-base>
   </li>
 </template>
 
 <script lang="ts">
 import { PropType } from '@nuxtjs/composition-api'
 import Vue from 'vue'
-import ModalComponent from '../ModalComponent.vue'
-import StoreComponent from './StoreComponent.vue'
+import ModalBase from '../ModalBase.vue'
+import StoreExperience from './StoreExperience.vue'
 import { Experiencies } from '@/client/types/api'
 export default Vue.extend({
   name: 'ExperienceListComponent',
-  components: { ModalComponent, StoreComponent },
+  components: { ModalBase, StoreExperience },
   props: {
     experience: {
       type: Object as PropType<Experiencies>,

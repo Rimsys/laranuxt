@@ -28,28 +28,28 @@
       </div>
     </li>
 
-    <modal-component
+    <modal-base
       v-if="editModalActive"
       :destroyed="() => (editModalActive = false)"
     >
-      <store-component
+      <store-skill
         :skill="skill"
         @skill-updated="$emit('skill-updated', $event)"
       />
-    </modal-component>
+    </modal-base>
   </div>
 </template>
 
 <script lang="ts">
 import { PropType } from '@nuxtjs/composition-api'
 import Vue from 'vue'
-import ModalComponent from '../ModalComponent.vue'
-import StoreComponent from './StoreComponent.vue'
+import ModalBase from '../ModalBase.vue'
+import StoreSkill from './StoreSkill.vue'
 import { Skill } from '@/client/types/api'
 
 export default Vue.extend({
-  name: 'SkillListComponent',
-  components: { ModalComponent, StoreComponent },
+  name: 'ListSkill',
+  components: { ModalBase, StoreSkill },
   props: {
     skill: {
       type: Object as PropType<Skill>,

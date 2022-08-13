@@ -38,29 +38,29 @@
           </div>
         </div>
         <p class="pt-10">{{ bio.professional_summary }}</p>
-        <interest-component :interests="bio.interests" />
+        <interest-get-interest :interests="bio.interests" />
       </div>
     </div>
-    <value-component :myvalues="bio.myvalues" />
+    <value-get-value :myvalues="bio.myvalues" />
 
-    <modal-component
+    <modal-base
       v-if="editModalActive"
       :destroyed="() => (editModalActive = false)"
     >
-      <store-component :bio="bio" @update-bio="$emit('update-bio', $event)" />
-    </modal-component>
+      <store-biodata :bio="bio" @update-bio="updateBioInTheUi($event)" />
+    </modal-base>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import ModalComponent from '../ModalComponent.vue'
-import StoreComponent from './StoreComponent.vue'
-import { BioData } from '@/types/api'
+import ModalBase from '../ModalBase.vue'
+import StoreBiodata from './StoreBiodata.vue'
+import { Bio, BioData } from '@/types/api'
 
 export default Vue.extend({
-  name: 'AboutComponent',
-  components: { ModalComponent, StoreComponent },
+  name: 'GetBiodata',
+  components: { ModalBase, StoreBiodata },
   data () {
     const bio: BioData = []
 
@@ -72,11 +72,27 @@ export default Vue.extend({
   },
   mounted () {
     this.getBio()
-    console.log(this.bio)
   },
   methods: {
     async getBio (): Promise<void> {
       this.bio = (await this.$axios.get('bioData')).data.data as BioData
+    },
+    updateBioInTheUi (event: { initial: any; updated: Bio }): void {
+      const { initial, updated } = event
+
+      initial.first_name = updated.first_name
+      initial.last_name = updated.last_name
+      initial.headline = updated.headline
+      initial.email = updated.email
+      initial.location = updated.location
+      initial.professional_summary = updated.professional_summary
+      initial.interests = [updated.interests]
+      initial.myvalues = updated.myvalues
+      initial.github_url = updated.github_url
+      initial.linkedin_url = updated.linkedin_url
+
+      this.$toast.success('Biodata updated')
+      this.editModalActive = false
     },
   },
 })
