@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use acidjazz\metapi\MetApi;
+use App\Models\User;
 use Faker\Factory;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -47,7 +48,7 @@ class Controller extends BaseController
             ->verify();
 
         $faker = Factory::create();
-        $users = [];
+//        $users = User::get(['name','email']);
 
         for ($i = 0; $i !== (int) $request->get('count'); $i++) {
             $email = $faker->unique()->safeEmail;

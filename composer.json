@@ -14,7 +14,9 @@
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.12",
-        "laravel/tinker": "^2.5"
+        "laravel/passport": "^10.4",
+        "laravel/tinker": "^2.5",
+        "laravel/ui": "^3.1"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.5",
@@ -69,6 +71,9 @@
         ],
         "cs-v": [
             "@php vendor/bin/phpcs -s"
+        ],
+        "fix": [
+            "./vendor/bin/phpcbf"
         ]
     }
 }

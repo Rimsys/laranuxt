@@ -14,6 +14,12 @@ module.exports = {
   plugins: [
   ],
   theme: {
+    screens: {
+      sm: '480px',
+      md: '768px',
+      lg: '1066px',
+      xl: '1440px',
+    },
     extend: {
       colors: {
       },

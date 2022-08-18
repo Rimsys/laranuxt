@@ -72,8 +72,10 @@ export default {
     '@nuxtjs/axios',
     // Doc: https://github.com/acidjazz/nuxt-tailvue
     ['nuxt-tailvue', { all: true }],
+    '@nuxtjs/auth-next',
   ],
   /*
+
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
   */
@@ -88,6 +90,28 @@ export default {
   ** Build configuration
   ** See https://nuxtjs.org/api/configuration-build/
   */
+  auth: {
+    redirect: {
+      home: '/profile',
+    },
+    strategies: {
+      laravelPassportPasswordGrant: {
+        name: 'laravelPassportPassword',
+        provider: 'laravel/passport',
+        url: 'http://localhost:8000',
+        endpoints: {
+          logout: '/api/v1/logout',
+          user: {
+            url: '/api/v1/user',
+          },
+        },
+        clientId: process.env.PASSPORT_CLIENT_ID,
+        clientSecret: process.env.PASSPORT_CLIENT_SECRET,
+        grantType: 'password',
+      },
+    },
+  },
+
   build: {
   },
 
