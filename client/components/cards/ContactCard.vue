@@ -4,7 +4,7 @@
       <div class="flex-1 truncate">
         <div class="flex items-center space-x-3">
           <h3 class="text-gray-900 text-sm leading-5 font-medium truncate">
-            {{ user.name }}
+            {{ user.name }} 1111
           </h3>
           <span
             v-if="is_admin"

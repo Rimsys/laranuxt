@@ -43,6 +43,7 @@ export default {
   components: [
     '@/components',
     '@/components/cards',
+    '@/components/profile',
   ],
   /*
   ** Nuxt.js dev-modules

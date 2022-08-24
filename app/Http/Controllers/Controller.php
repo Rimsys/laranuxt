@@ -18,6 +18,19 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests, MetApi;
 
     /**
+     * Add Form Request Rules to MetApi Options
+     *
+     * @param  Request  $request
+     */
+    protected function addResponseOptions(Request $request)
+    {
+        $rules = $request->rules();
+        foreach ($rules as $name => $rule) {
+            $this->option($name, $rule);
+        }
+    }
+
+    /**
      * Display our routes
      *
      * @return string
