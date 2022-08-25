@@ -71,7 +71,7 @@ export default Vue.extend({
     const allSkills:Skills = []
     const newSkill = {
       name: '',
-      years: '',
+      years: 0,
     }
 
     return {
@@ -92,8 +92,8 @@ export default Vue.extend({
     })
   },
   computed: {
-    unselectedSkills () {
-      return this.allSkills.filter((skill) => { return !this.skills.some(usedSkill => usedSkill.name === skill.name) })
+    unselectedSkills (): Skills {
+      return this.allSkills.filter(skill => !this.skills.some(usedSkill => usedSkill.name === skill.name))
     },
   },
   methods: {
@@ -129,7 +129,7 @@ export default Vue.extend({
           /* reset newSkill */
           this.newSkill = {
             name: '',
-            years: '',
+            years: 0,
           }
         })
     },

@@ -54,8 +54,8 @@ export interface Interest {
 
 export interface Skill {
   name: string
-  years?: string
-  order?: string
+  years?: number
+  order?: number
 }
 
 export type Skills = Array<Skill>
