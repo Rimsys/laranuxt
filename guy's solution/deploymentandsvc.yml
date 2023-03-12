@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-web-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      type: web
+  template:
+    metadata:
+      labels:
+        type: web
+    spec:
+      containers:
+      - name: nginx
+        image: guyvalery/nginx-custom:v1
+        ports:
+        - containerPort: 80
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-web-service
+spec:
+  selector:
+    type: web
+  ports:
+  - name: http
+    port: 80
+    targetPort: 3000
+  type: LoadBalancer
+
