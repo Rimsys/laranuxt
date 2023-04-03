@@ -36,6 +36,10 @@ class RouteServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->configureRateLimiting();
+
+        // Call the mapWebRoutes method to register web routes
+        $this->mapWebRoutes();
+
         Route::middleware('api')
             ->group(base_path('routes/api.php'));
     }
@@ -50,5 +54,13 @@ class RouteServiceProvider extends ServiceProvider
         RateLimiter::for('api', function (Request $request) {
             return Limit::perMinute(60);
         });
+    }
+
+    // Add the mapWebRoutes method here
+    protected function mapWebRoutes()
+    {
+        Route::middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/web.php'));
     }
 }
