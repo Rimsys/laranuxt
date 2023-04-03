@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rimsy-deployment
+  namespace: rimsy
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      type: web
+  template:
+    metadata:
+      labels:
+        type: web
+    spec:
+      containers:
+      - name: rimsy
+        image: philipvibrant001/rimsy:3.0
+        ports:
+        - containerPort: 3000
