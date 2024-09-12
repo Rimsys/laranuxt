@@ -27,3 +27,44 @@ export interface User {
 }
 
 export type Users = Array<User>
+
+export interface Resume {
+  resume_id: number
+  full_name: string
+  email: string
+  phone: string
+  role: string
+  about: string
+}
+
+export interface Link {
+  name: string
+  url: string
+}
+
+export interface Language {
+  code: string
+  name: string
+  level: string
+}
+
+export interface Interest {
+  name: string
+}
+
+export interface Skill {
+  name: string
+  years?: number
+  order?: number
+}
+
+export type Skills = Array<Skill>
+
+export interface Experience {
+  company: string
+  role: string
+  date_start: string
+  date_end: string
+  description: string
+  skills: Array<Skill>
+}

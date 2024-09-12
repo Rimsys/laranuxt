@@ -54,5 +54,9 @@ git clone git@github.com:Rimsys/laranuxt.git; cd laranuxt; yarn; composer instal
 * run `yarn dev` in one terminal for our nuxt dev setup
 * run `yarn api` (alias for `./artisan serve`) in another terminal for our laravel API
 
-### Features
+### How to run the project
+* create the .env file and run `php artisan key:generate`
+* run `php artisan database:start`
+* run `php artisan migrate --seed`
+* run `composer install`
 
